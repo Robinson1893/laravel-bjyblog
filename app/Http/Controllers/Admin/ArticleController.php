@@ -21,7 +21,12 @@ class ArticleController extends Controller
         if (empty($wd)) {
             $id = [];
         } else {
+
             $id = $articleModel->searchArticleGetId($wd);
+
+
+
+
         }
 
         $article = Article::with('category')
@@ -39,11 +44,11 @@ class ArticleController extends Controller
     public function create()
     {
         $category = Category::all();
-        $tag      = Tag::all();
+        $tag         = Tag::all();
         $author   = Config::where('name', 'AUTHOR')->value('value');
         $assign   = compact('category', 'tag', 'author');
 
-        return view('admin.article.create', $assign);
+        return view();
     }
 
     public function uploadImage()
